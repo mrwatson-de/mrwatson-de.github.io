@@ -1,0 +1,23 @@
+{% comment %}
+Automatically include an image from /assets/images/«pagename».ext
+(works for posts and normal pages)
+{% endcomment %}
+
+{% assign possible_extensions = "svg,png,jpg,jpeg,gif,webp" | split: "," %}
+{% assign base_name_no_ext = page.path 
+   | split: "/" | last
+   | remove: ".md"
+   | remove: ".markdown"
+   | remove: ".html"
+%}
+
+{% for ext in possible_extensions %}
+  {% assign image_path = "/assets/images/" | append: base_name_no_ext | append: "." | append: ext %}
+  {% assign matching_files = site.static_files | where: "path", image_path %}
+  {% if matching_files.size > 0 %}
+    <img src="{{ image_path | relative_url }}" alt="{{ page.title }}"
+         {% if include.width %}width="{{ include.width }}"{% endif %}
+         {% if include.height %}height="{{ include.height }}"{% endif %}>
+    {% break %}
+  {% endif %}
+{% endfor %}

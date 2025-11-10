@@ -1,0 +1,9 @@
+---
+layout: default
+---
+{% include post-image.html width=site.page_image_width %}
+<h1>{{ page.title }}</h1>
+<p>{{ page.date | date: "%d.%m.%Y" }} {{ page.author }}</p>
+
+
+{{ content }}

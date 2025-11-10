@@ -1,0 +1,17 @@
+- name: Home
+  link: /
+
+- name: Blog
+  link: /mrwatsons-blog
+
+- name: About
+  link: /about
+
+- name: Help
+  link: /help
+
+- name: Support
+  link: /support
+
+- name: My Friends
+  link: /myfriends

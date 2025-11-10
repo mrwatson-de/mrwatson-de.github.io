@@ -1,0 +1,748 @@
+/* SPECIFIC ITEMS */
+#markdown-toc {
+  float:right;
+  position:relative;
+  z-index: 10;
+  margin:6px;
+  margin-bottom:2rem;
+  padding:6px;
+  padding-left:32px;
+  padding-right:12px;
+  background-color:#f8f8f8;
+  box-shadow: 2.5px 2.5px 10px #75f64f;
+}
+
+#markdown-toc li {
+  list-style-position: inside;
+}
+
+#markdown-toc:before  {
+	content: 'Page Contents';
+}
+
+#markdown-toc ul  {
+	position: relative;
+	list-style: none;
+}
+#markdown-toc li:before {
+	content: "▷" !important;
+  color:#75f64f
+}
+
+/* GENERAL CLASSES */
+
+.fullwidth {
+  /* Break out on both sides */
+  margin-left: calc(-2rem);
+  margin-right: calc(-2rem);
+  /* Expand width to cover that extra space */
+  width: calc((100vw/2) + 16rem);
+  background-color: #f0f0f0;
+  padding: 2rem;
+}
+
+.whitewash {
+  filter: contrast(30%) brightness(150%)
+}
+
+
+/* Light backgrounds */
+
+.no-bg {
+  background-color: none !important;
+}
+.white-bg {
+  background-color: white !important;
+}
+
+.light-grey-bg {
+  background-color: #f0f0f0 !important;
+}
+
+.mrw-green-bg {
+  background-color: #79fb4d !important;
+}
+
+.mrw-gold {
+  color: gold !important;
+  border: 1px solid gold !important;
+}
+
+.mrw-gold-bg {
+  background-color: gold !important;
+  color: black;
+}
+
+.mrw-golden-rule {
+  background-color: gold !important;
+  color: black;
+}
+
+.mrw-golden-rule::before {
+  content: "🥇 ";
+  margin-right: 0.25rem; /* space between emoji and text */
+}
+
+.fmide-bg {
+  background-color: #eaab43 !important;
+  color: black !important;
+}
+
+.mrw-crescendo3-bg {
+  /* Gradient: blue (cool) → orange (amazing) → gold (awesome) */
+  background: linear-gradient(180deg, #aaffff 0%, #ec682c 50%, #ffd700 100%);
+  color: #222; /* dark text for readability */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  /* Optional: add a subtle overlay for even better readability */
+  position: relative;
+  overflow: hidden;
+}
+
+.mrw-crescendo3-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional: subtle white overlay for text clarity */
+.mrw-crescendo3-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.18);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.under-construction {
+  background-color: #ec682c !important;
+  color: black !important;
+}
+
+.under-construction::before {
+  content: "🚧 ";
+  margin-right: 0.25rem; /* space between emoji and text */
+}
+
+.under-construction::after {
+  content: " 🚧";
+  margin-left: 0.25rem; /* space between emoji and text */
+}
+
+.watch-this-space {
+  background-color: #ec682c !important;
+  color: black !important;
+}
+
+.watch-this-space::before {
+  content: "👉 ";
+  margin-right: 0.25rem; /* space between emoji and text */
+}
+
+.watch-this-space::after {
+  content: " 👀";
+  margin-left: 0.25rem; /* space between emoji and text */
+}
+
+
+
+/* Dark backgrounds */
+
+/* Define a mixin for light text, headings, and links */
+@mixin light-text {
+  color: #fff;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
+
+  a {
+    color: #70b6fb; // Adjusted to match the hue of standard mode
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3); // Dim underline
+
+    &:hover {
+      text-decoration-color: rgba(255, 255, 255, 0.8); // Stark underline on hover
+    }
+  }
+
+  :not(pre, figure) > code {
+    background-color: #aaacb3;
+  }
+}
+
+.side-note {
+  @extend .note;
+  @extend .float-front-right;
+  min-width: 180px;
+  max-width: 360px;
+}
+
+.note {
+  background-color: #fff9c4 !important; /* light yellow */
+  color: #333 !important;
+  border: 1.5px solid #ffe066;
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.10), 0 1px 0 #ffe066 inset;
+  border-radius: 8px 24px 8px 8px;
+  padding: 1rem 1.5rem 1rem 2.5rem;
+  position: relative;
+  font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+  margin: 1em 0;
+  /* Optional: subtle tilt for realism */
+  transform: rotate(-1deg);
+}
+
+.note::before {
+  content: "👉 ";
+  margin-right: 0.15rem; /* space between emoji and text */
+  margin-left: -1.65rem; /* space between emoji and margin */
+  }
+
+.mrw-windows-bg {
+  background-color: #0050ef !important;
+  @include light-text;
+}
+
+.mrw-orange-bg {
+  background-color: #ec682c !important;
+  @include light-text;
+}
+
+.mrw-red-bg {
+  background-color: #ec0000 !important;
+  @include light-text;
+}
+
+.mrw-schwarz-bg {
+  background-color: #111 !important;
+  @include light-text;
+}
+
+.mrw-blue-bg {
+  background-color: #1432ef !important;
+  @include light-text;
+}
+
+code {
+  color: black;
+}
+
+/* FIXME */
+.mrw-dark-bg {
+  background-color: #000 !important;
+  @include light-text;
+}
+
+/* FIXME */
+.mrw-dark-bg h2 {
+  color: #79fb4d;
+}
+
+.fixme {
+  background-color: #ec0000 !important;
+  @include light-text;
+}
+
+.fixme::before {
+  content: "FIXME: ";
+}
+
+.mbs-bg {
+  background-color: #a68751 !important;
+  @include light-text;
+}
+
+.mrw-killer-bg {
+  background-color: #74a !important;
+  @include light-text;
+}
+
+.mrw-red {
+  color: red !important;
+}
+
+.mrw-orange {
+  color: orange !important;
+}
+
+.mrw-green {
+  color: #72f54a !important;
+}
+
+.mrw-blue {
+  color: #1432ef !important;
+}
+
+.wingdings3 {
+  font-family: "Wingdings 3";
+}
+
+.mrw-text-logo {
+  font-family: "Wingdings 3";
+}
+
+
+.float-front-right {
+  float:right;
+  position:relative;
+  z-index: 10;
+}
+
+.w-50pc {
+  width: 50%;
+}
+
+.w-25pc {
+  width: 25%;
+}
+
+.w-20pc {
+  width: 20%;
+}
+
+.w-33pc {
+  width: 33%;
+}
+
+.w-75pc {
+  width: 75%;
+}
+
+.w-66pc {
+  width: 66%;
+}
+
+.w-100pc {
+  width: 100%;
+}
+
+.w-256 {
+  width: 256px;
+}
+
+.w-192 {
+  width: 192px;
+}
+
+.w-160 {
+  width: 160px;
+}
+
+.w-128 {
+  width: 128px;
+}
+
+.w-96 {
+  width: 64px;
+}
+
+.w-64 {
+  width: 64px;
+}
+
+.w-48 {
+  width: 48px;
+}
+
+.w-32 {
+  width: 32px;
+}
+
+.w-24 {
+  width: 24px;
+}
+
+.w-16 {
+  width: 16px;
+}
+
+.h-128 {
+  height: 128px;
+}
+
+.h-64 {
+  height: 64px;
+}
+
+.h-32 {
+  height: 32px;
+}
+
+.mr-2 {
+  margin-right: 2px !important;
+}
+
+.mr-4 {
+  margin-right: 4px !important;
+}
+
+.rainbow {
+  background: linear-gradient(to left,violet,indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.clear {
+  clear: both;
+}
+
+.mt-8 {
+  margin-top: 8px !important;
+}
+
+.mt-16 {
+  margin-top: 16px ;
+}
+
+.mt--8 {
+  margin-top: -8px;
+}
+
+.mt--16 {
+  margin-top: -16px;
+}
+
+.mt--32 {
+  margin-top: -32px;
+}
+
+.lowlight {
+  color: #ccc;
+}
+
+
+/* Whitewash effect from https://stackoverflow.com/questions/78478073/css-filter-fading-an-image-to-white-by-overlaying-a-white-color */
+.image-whitewash-hover {
+  filter: invert(0.45) brightness(1.9);
+  transition: filter 0.1s;
+}
+
+.image-whitewash-hover:hover {
+  filter: invert(0.3) brightness(1.6);
+}
+
+.button-image {
+  max-width: 64px;
+  height: auto;
+  transition: transform 0.2s;
+}
+
+.button-image:hover {
+  transform: scale(1.1);
+}
+
+
+
+.mrw-github-corner:hover {
+  filter: invert(0.25) brightness(1.5);
+
+}
+
+.mrw-github-corner {
+  filter: invert(0.48) brightness(1.96);
+  transition: filter 0.1s;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 1000;
+  width: 64px;
+  height: 64px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mrw-github-corner:hover::before {
+  content: "Get\\A Me on\\A Github !";
+  white-space: pre;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
+  z-index: 10;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-10xl {
+  font-size: 10rem;
+}
+
+.text-8xl {
+  font-size: 8rem;
+}
+
+.text-6xl {
+  font-size: 6rem;
+}
+
+.text-4xl {
+  font-size: 4rem;
+}
+
+.text-3xl {
+  font-size: 3rem;
+}
+
+.text-2xl {
+  font-size: 2.5rem;
+}
+
+.text-xl {
+  font-size: 2rem;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+}
+
+.text-md {
+  font-size: 1.25rem;
+}
+
+.text-sm {
+  font-size: 1rem;
+}
+
+.text-xs {
+  font-size: 0.875rem;
+}
+
+.text-2xs {
+  font-size: 0.75rem;
+}
+
+.text-3xs {
+  font-size: 0.625rem;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-ARMTB {
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  font-weight: bolder;
+}
+
+.emoji-icon {
+  margin:0px;
+    margin-block-start: 2px;
+    margin-block-end: 2px;
+ 
+}
+
+.important-icon::before {
+  content: '👈';
+  float:right;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+}
+
+.posts {
+  font-size:smaller;
+  padding:2px;
+  margin:2px;
+}
+
+.post-date {
+   @extend  .unimportant;
+  font-size:smaller;
+}
+
+.unimportant {
+  color: gray;
+}
+
+.no-break-before {
+  /* Prevent page breaks before this element */
+  break-before: avoid;
+}
+
+/* 
+SPECIFIC ELEMENT STYLES
+*/
+
+
+
+/* Keys */
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0.1em;
+  padding: 0.2em 0.3em;
+  min-width: 2em;
+
+  
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.7rem;
+}
+
+/* MAC KEY */
+kbd {
+  color: #fff;
+  background: linear-gradient(to bottom, #444 0%, #222 100%);
+  border: 1px solid #000;
+  border-radius: 6px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4), /* outer 3D shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.05), /* subtle top highlight */
+    0 0 4px rgba(255, 255, 255, 0.1); /* slight glow around the key */
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+kbd.win, .win kbd {
+  background: linear-gradient(to bottom, #ccc 0%, #999 100%);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  /* 3D + Glow shadows */
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),  /* subtle outer 3D shadow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3), /* top highlight */
+    0 0 4px rgba(255, 255, 255, 0.1); /* gentle glow around the key */
+
+  color: #666; /* darker text for better contrast against lighter grays */
+  text-shadow: 0.5px 1px 0.5px #ccc;
+
+  /* transition for hover effect */
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+
+pre.steps {
+  background:
+    /* top header: 20px high, full width */
+    linear-gradient( to bottom,
+      #c2c2c2 20px, 
+      transparent 20px
+    ) top left / 100% 20px no-repeat,
+    /* left gutter: 10px wide, full height */
+    linear-gradient( to right,
+      #ececec 20px,
+      transparent 20px
+    ) top left / 20px 100% no-repeat,
+    /* main body */
+    #fff;
+  padding: calc(1rem + 20px) calc(1rem) calc(1rem) calc(1rem + 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* enable wrapping */
+  white-space: pre-wrap;       /* preserve spaces & wrap lines */
+  overflow-wrap: break-word;   /* break long words if needed */
+}
+
+h1 {
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif !important;
+}
+
+/* Thicker border before a new tbody section */
+div.table-wrapper table tbody + tbody tr:first-child td {
+  border-top: 1px solid #eeebee; /* adjust thickness & color */
+}
+
+/*************************/
+/* GitHub Feed Item View */
+/*************************/
+
+.js-feed-item-view {
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background: #f6f8fa;
+  font-family: system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  /* ensure smooth background‐color transitions: */
+  transition: background-color 2s ease-in-out;
+}
+
+.js-feed-item-view a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.js-feed-item-view a:hover {
+  text-decoration: underline;
+}
+
+.js-feed-item-view time {
+  display: block;
+  font-size: 0.8em;
+  color: #586069;
+  margin-top: 0.25em;
+}
+
+.issues_opened::before {
+  content: "🐛 Issue opened: ";
+  font-weight: bold;
+}
+
+.watch_started::before {
+  content: "⭐ Starred repo: ";
+  font-weight: bold;
+}
+
+.fork::before {
+  content: "🍴 Forked repo: ";
+  font-weight: bold;
+}
+
+.public::before {
+  content: "📂 Public repo: ";
+  font-weight: bold;
+}
+.js-feed-item-view a.d-inline-block {
+  /*
+  float: left;
+  margin-top: 0.25em;
+  margin-right: 0.75em;
+  */
+  vertical-align: middle;
+}
+
+/*******************/
+/* Github Calendar */
+/*******************/
+
+/* 1) Reset the theme’s pad/minimum on your calendar */
+.ContributionCalendar-grid td,
+.ContributionCalendar-grid th {
+  /* remove that huge min-width */
+  min-width: auto !important;    
+  /* collapse the padding so your width is exact */
+  padding: 0 !important;         
+  /* make sure width is calculated from content-box */
+  box-sizing: content-box;       
+}
+
+/* 2) Force the cell to stay 11px wide */
+.ContributionCalendar-day {
+  width: 11px !important;
+  min-width: auto !important;
+}
