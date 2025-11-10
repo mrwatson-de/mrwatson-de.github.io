@@ -6,14 +6,6 @@ nav_order: 200
 permalink: /about/
 ---
 
-## About the Team
-
-{% for author in site.authors %}
-
-- [{{ author.name }}]({{ author.url }}) // {{ author.position }}
-
-{% endfor %}
-
 ## About this Website
 
 This Website is built with Jekyll
@@ -29,3 +21,10 @@ You can find the source code for Jekyll at GitHub:
 [jekyll](https://github.com/jekyll/jekyll)
 
 [jekyll-organization]: https://github.com/jekyll
+
+## Impressum
+
+Russell Watson
+Wilhelm-Münker-Str. 26
+59821 Arnsberg
+Germany
